@@ -14,10 +14,15 @@ func about(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("About page"))
 }
 
+func services(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Services page"))
+}
+
 func main() {
 	mux := http.NewServeMux() //need to setup router to register handler
 	mux.HandleFunc("/", home)
 	mux.HandleFunc("/about", about)
+	mux.HandleFunc("/services", services)
 	log.Println("Starting server on :4000")
 
 	err := http.ListenAndServe(":4000", mux)
